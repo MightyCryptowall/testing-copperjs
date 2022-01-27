@@ -1,0 +1,20 @@
+{
+  "name": "mvc-js",
+  "source": "index.html",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel --open",
+    "copy:redirect": "cp _redirects dist",
+    "build": "yarn install && parcel build index.html && yarn copy:redirect"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cropperjs": "^1.5.12",
+    "croppr": "^2.3.1",
+    "dnm-smartcroppr": "^1.3.4",
+    "parcel": "^2.2.0"
+  },
+  "devDependencies": {}
+}
