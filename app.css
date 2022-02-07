@@ -1,0 +1,6 @@
+@import 'node_modules/cropperjs/dist/cropper.min.css';
+
+
+.img-container img {
+    max-width: 100%;
+}

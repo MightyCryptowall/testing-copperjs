@@ -11,33 +11,60 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="app.css">
   </head>
   <body>
    
     <div class="app"></div>
 
-   
-    <img src="picture.jpg" id="empty-image" style="display: none;"  />
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <img id="blah" class="d-none"/>
+    <div class="col-3">
+      <img src="picture.jpg" id="empty-image" class="img-fluid" style="display: none;"  />
+    </div>
+    <button type="button" class="btn btn-primary" onclick="window.openCropping(event,'image-cropper-modal')">
       Upload Image
     </button>
     
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="image-cropper-modal" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           
+          
           </div>
           <div class="modal-body">
-            <img class="my-image" id="croppr" src="picture.jpg" />
+              <div class="img-container d-none">
+                <img class="my-image" id="cropper" src="picture.jpg"   />
+              </div>
+            
+              <form class="row align-items-end gx-2 pt-3">
+                <div class="col-4">
+                  <div class="upload d-grid mb-3">
+                    <button class="btn btn-outline-dark" onclick="window.uploadImageButton(event)">Upload</button>
+                    <input type="file" name="file" id="crop-image-input" class="d-none" onchange="window.onImageChange(event)">
+                  </div>
+                  <input type="number" name="width" placeholder="Width" class="form-control">
+                </div>  
+                <div class="col-4">
+                  <div class="d-grid mb-3">
+                    <button class="btn btn-outline-dark" onclick="window.cancelCropping(event)">Cancel</button>
+                  </div>
+                  <input type="number" name="height" placeholder="Height" class="form-control">
+                </div> 
+                <div class="col-4">
+                  <div class="d-grid mb-3">
+                    <button class="btn btn-outline-dark" id="upload-image" onclick="window.cropImage(event)">Crop</button>
+                  </div>
+                  <div class="d-grid">
+                    <button class="btn btn-outline-dark btn-block" onclick="window.setCropRatio(event)">Set Ratio</button>
+                  </div>
+                </div> 
+              </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="save-button">Save changes</button>
-          </div>
+         
+          
         </div>
       </div>
     </div>
